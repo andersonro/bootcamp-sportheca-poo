@@ -45,15 +45,23 @@ public class Main {
         bootcamp.getConteudos().add(mentoria);
         bootcamp.getConteudos().add(mentoria1);
 
+        //REMOVE CONTEÚDOS
+        System.out.println(bootcamp);
+        System.out.println("Bootcamp: " + bootcamp.getNome() + " quantidade de conteúdos: " + bootcamp.qtdConteudosBootcamp(bootcamp));
+        bootcamp.removeConteudo(curso1);
+        System.out.println(bootcamp);
+        System.out.println("Bootcamp: " + bootcamp.getNome() + " quantidade de conteúdos: " + bootcamp.qtdConteudosBootcamp(bootcamp));
+        System.out.println("");
+
         Dev dev1 = new Dev();
         dev1.setNome("Anderson");
         dev1.inscreverBootcamp(bootcamp);
-        System.out.println("Conteudos escritos " + dev1.getNome() + " "+ dev1.getConteudosInscritos());
+        System.out.println("Conteúdos escritos " + dev1.getNome() + " "+ dev1.getConteudosInscritos());
         dev1.progredir();
         dev1.progredir();
         System.out.println("");
-        System.out.println("Conteudos concluídos " + dev1.getNome() + " "+ dev1.getConteudosConluidos());
-        System.out.println("Conteudos escritos " + dev1.getNome() + " "+ dev1.getConteudosInscritos());
+        System.out.println("Conteúdos concluídos " + dev1.getNome() + " "+ dev1.getConteudosConluidos());
+        System.out.println("Conteúdos escritos " + dev1.getNome() + " "+ dev1.getConteudosInscritos());
         System.out.println("XP = " + dev1.calcularTotalXp());
 
         System.out.println("");
@@ -68,6 +76,10 @@ public class Main {
         System.out.println("Conteudos concluídos " + dev2.getNome() + " "+ dev2.getConteudosConluidos());
         System.out.println("Conteudos escritos " + dev2.getNome() + " "+ dev2.getConteudosInscritos());
         System.out.println("XP = " + dev2.calcularTotalXp());
+
+        System.out.println("");
+        System.out.println("Devs inscritos");
+        bootcamp.devInscritos();
 
     }
 

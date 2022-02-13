@@ -1,10 +1,7 @@
 package br.com.dio.dominio;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Bootcamp {
 
@@ -55,6 +52,26 @@ public class Bootcamp {
         this.conteudos = conteudos;
     }
 
+    public void removeConteudo(Conteudo conteudo){
+        if (this.conteudos.contains(conteudo)) {
+            this.conteudos.remove(conteudo);
+        }else{
+            System.err.println("Conteúdo não está cadastrado nesse bootcamp!");
+        }
+    }
+
+    public int qtdConteudosBootcamp(Bootcamp bootcamp){
+        return bootcamp.getConteudos().size();
+    }
+
+    public void devInscritos(){
+        Set<Dev> devIncritos = new TreeSet<>(new ComparatorNomeXp());
+        devIncritos.addAll(this.getDevInscritos());
+        for (Dev dev: devIncritos){
+            System.out.println("Nome: " + dev.getNome() + " XP adquiridos " + dev.calcularTotalXp());
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -66,5 +83,27 @@ public class Bootcamp {
     @Override
     public int hashCode() {
         return Objects.hash(nome, descricao, dataInicio, dateFinal, devInscritos, conteudos);
+    }
+
+    @Override
+    public String toString() {
+        return "Bootcamp{" +
+                "nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", dataInicio=" + dataInicio +
+                ", dateFinal=" + dateFinal +
+                ", devInscritos=" + devInscritos +
+                ", conteudos=" + conteudos +
+                '}';
+    }
+}
+
+class ComparatorNomeXp implements Comparator<Dev>{
+
+    @Override
+    public int compare(Dev d1, Dev d2) {
+        int nome = d1.getNome().compareTo(d2.getNome());
+        if (nome != 0) return nome;
+        return Integer.compare((int) d1.calcularTotalXp(), (int) d2.calcularTotalXp());
     }
 }

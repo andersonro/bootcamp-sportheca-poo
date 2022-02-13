@@ -57,6 +57,10 @@ public class Dev {
         this.conteudosConluidos = conteudosConluidos;
     }
 
+    public void cancelaInscricao(Bootcamp bootcamp){
+        this.conteudosInscritos.removeAll(bootcamp.getConteudos());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
